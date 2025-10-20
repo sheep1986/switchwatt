@@ -62,29 +62,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-b from-gray-50 to-white border-t border-gray-200">
-      {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-primary-500 to-secondary-500 py-12">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="text-white">
-              <h3 className="text-2xl font-bold mb-2">Stay Updated on Energy Savings</h3>
-              <p className="text-white/90">Get the latest energy deals and money-saving tips delivered to your inbox</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-4 focus:ring-white/30"
-              />
-              <button className="bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-                Subscribe
-                <ArrowRight className="inline-block ml-2 h-4 w-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Content */}
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">

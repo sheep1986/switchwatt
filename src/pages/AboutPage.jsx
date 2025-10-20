@@ -56,25 +56,29 @@ const AboutPage = () => {
       name: 'Sarah Johnson',
       position: 'Managing Director',
       experience: '15+ years in energy',
-      description: 'Expert in business energy procurement with a track record of saving millions for UK businesses.'
+      description: 'Sarah leads our strategic vision and has helped over 50,000 businesses reduce their energy costs.',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face'
     },
     {
       name: 'Michael Chen',
       position: 'Head of Technology',
       experience: '12+ years in tech',
-      description: 'Leading our technical innovation to make energy switching faster and more efficient.'
+      description: 'Michael oversees our digital platform that has streamlined energy switching for thousands of businesses.',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face'
     },
     {
       name: 'Emma Williams',
       position: 'Customer Success Manager',
       experience: '8+ years in customer service',
-      description: 'Ensuring every customer gets the support they need throughout their energy journey.'
+      description: 'Emma ensures every client receives personalized support throughout their energy switching journey.',
+      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face'
     },
     {
       name: 'James Thompson',
-      position: 'Energy Analyst',
+      position: 'Energy Market Analyst',
       experience: '10+ years in energy markets',
-      description: 'Analyzing market trends to identify the best opportunities for our customers.'
+      description: 'James analyzes market trends to secure the most competitive energy deals for our business clients.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face'
     }
   ]
 
@@ -170,8 +174,56 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Mission */}
+      {/* Our Story */}
       <section className="py-20">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-6">
+                Our <span className="gradient-text">Story</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Switch Watt was founded in 2019 with a simple mission: to make business energy switching 
+                transparent, efficient, and profitable for UK businesses. Our founders, frustrated by the 
+                complex and time-consuming energy procurement process, decided to create a platform that 
+                would democratize access to competitive energy deals.
+              </p>
+              <p className="text-lg text-gray-600 mb-6">
+                Since our inception, we've helped over 900,000 businesses across the UK save millions 
+                on their energy bills. Our technology-driven approach combines market expertise with 
+                customer-focused service to deliver results that matter.
+              </p>
+              <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-6 text-white">
+                <blockquote className="text-lg italic">
+                  "Every business deserves access to fair energy prices. We're here to make that a reality."
+                </blockquote>
+                <cite className="block mt-3 font-semibold">Sarah Johnson, Managing Director</cite>
+              </div>
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" 
+                alt="Modern office environment representing Switch Watt team"
+                className="rounded-2xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-800">Est. 2019</p>
+                    <p className="text-sm text-gray-600">Serving UK Businesses</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Mission */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">
@@ -181,20 +233,29 @@ const AboutPage = () => {
               To empower UK businesses with transparent, hassle-free energy switching that 
               delivers real savings and exceptional service.
             </p>
-            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-8 text-white">
-              <blockquote className="text-xl italic">
-                "We believe every business deserves access to fair energy prices and 
-                exceptional service. That's why we've made it our mission to simplify 
-                energy switching and deliver guaranteed savings to our customers."
-              </blockquote>
-              <cite className="block mt-4 font-semibold">Sarah Johnson, Managing Director</cite>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <Shield className="h-12 w-12 text-primary-500 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-3">Transparency</h3>
+                <p className="text-gray-600">No hidden fees, clear contracts, honest advice</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <PiggyBank className="h-12 w-12 text-secondary-500 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-3">Savings</h3>
+                <p className="text-gray-600">Guaranteed better deals for your business</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <Award className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-3">Service</h3>
+                <p className="text-gray-600">Expert support throughout your journey</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Values */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
+      <section className="py-20">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
@@ -272,8 +333,12 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <div key={index} className="feature-card text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-10 w-10 text-primary-600" />
+                <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-semibold mb-2">{member.position}</p>

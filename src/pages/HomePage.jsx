@@ -181,9 +181,31 @@ const HomePage = () => {
               </div>
             </div>
             
-            {/* Quote Form */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Get Your Free Quote</h2>
+            {/* Hero Image & Quote Form */}
+            <div className="space-y-8">
+              {/* Professional Hero Image */}
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop" 
+                  alt="Modern business office representing energy efficiency"
+                  className="rounded-2xl shadow-2xl w-full h-64 object-cover"
+                />
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
+                      <Zap className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-800">£8.5M+</p>
+                      <p className="text-sm text-gray-600">Saved for Businesses</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Quote Form */}
+              <div className="bg-white rounded-3xl shadow-2xl p-8">
+                <h2 className="text-2xl font-bold mb-6">Get Your Free Quote</h2>
               <form className="space-y-4">
                 <div>
                   <label className="form-label">Business Name</label>
@@ -219,6 +241,7 @@ const HomePage = () => {
                   By submitting, you agree to our Terms & Conditions and Privacy Policy
                 </p>
               </form>
+            </div>
             </div>
           </div>
         </div>

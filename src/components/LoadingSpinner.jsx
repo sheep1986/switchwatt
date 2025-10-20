@@ -12,6 +12,10 @@ const LoadingSpinner = ({ fullPage = false, message = "Loading..." }) => {
             </div>
             <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full animate-ping opacity-20"></div>
           </div>
+          <div className="flex items-center justify-center space-x-2 mb-2">
+            <span className="text-xl font-bold text-secondary-500">Switch</span>
+            <span className="text-xl font-bold text-primary-500">Watt</span>
+          </div>
           <p className="text-gray-700 font-medium">{message}</p>
         </div>
       </div>

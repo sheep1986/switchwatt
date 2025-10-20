@@ -101,22 +101,17 @@ const BusinessElectricity = () => {
     {
       step: '1',
       title: 'Share Your Details',
-      description: 'Tell us about your business and current electricity usage'
+      description: 'Tell us about your business electricity needs'
     },
     {
       step: '2',
-      title: 'Compare Quotes',
-      description: 'We search 30+ suppliers to find the best electricity rates'
+      title: 'Compare & Choose',
+      description: 'We find the best deals and you select your preferred supplier'
     },
     {
       step: '3',
-      title: 'Choose Your Deal',
-      description: 'Select the perfect contract for your business needs'
-    },
-    {
-      step: '4',
-      title: 'We Handle Everything',
-      description: 'Sit back while we manage the entire switching process'
+      title: 'We Switch You',
+      description: 'We handle everything while you start saving'
     }
   ]
 
@@ -180,9 +175,31 @@ const BusinessElectricity = () => {
               </div>
             </div>
             
-            {/* Quote Form */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Get Your Free Electricity Quote</h2>
+            {/* Professional Image & Quote Form */}
+            <div className="space-y-8">
+              {/* Business Energy Image */}
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" 
+                  alt="Business electricity and energy efficiency"
+                  className="rounded-2xl shadow-2xl w-full h-64 object-cover"
+                />
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
+                      <Zap className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-800">45%</p>
+                      <p className="text-sm text-gray-600">Average Savings</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Quote Form */}
+              <div className="bg-white rounded-3xl shadow-2xl p-8">
+                <h2 className="text-2xl font-bold mb-6">Get Your Free Electricity Quote</h2>
               <form className="space-y-4">
                 <div>
                   <label className="form-label">Business Name</label>
@@ -227,6 +244,7 @@ const BusinessElectricity = () => {
                   By submitting, you agree to our Terms & Conditions and Privacy Policy
                 </p>
               </form>
+            </div>
             </div>
           </div>
         </div>
@@ -348,11 +366,11 @@ const BusinessElectricity = () => {
               How to Switch <span className="gradient-text">Business Electricity</span>
             </h2>
             <p className="text-xl text-gray-600">
-              Four simple steps to cheaper business electricity
+              Three simple steps to cheaper business electricity
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {process.map((item, index) => (
               <div key={index} className="relative">
                 {index < process.length - 1 && (
@@ -371,31 +389,6 @@ const BusinessElectricity = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Business Electricity <span className="gradient-text">FAQs</span>
-            </h2>
-          </div>
-          
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="feature-card">
-              <h3 className="text-lg font-bold mb-3">How much can I save on business electricity?</h3>
-              <p className="text-gray-600">Most businesses save between 20-45% on their electricity bills. The exact amount depends on your current rates, usage, and the deals available when you switch.</p>
-            </div>
-            <div className="feature-card">
-              <h3 className="text-lg font-bold mb-3">Will switching affect my electricity supply?</h3>
-              <p className="text-gray-600">No, your electricity supply will not be interrupted when you switch. The same wires and infrastructure deliver your power - only your supplier and bill change.</p>
-            </div>
-            <div className="feature-card">
-              <h3 className="text-lg font-bold mb-3">How long does it take to switch business electricity?</h3>
-              <p className="text-gray-600">The switching process typically takes 2-3 weeks from contract signing. We handle all the paperwork and coordination with your old and new suppliers.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary-500 to-secondary-500">

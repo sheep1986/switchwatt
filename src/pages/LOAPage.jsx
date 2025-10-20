@@ -1,64 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { 
   FileText, 
   Shield, 
   CheckCircle, 
   ArrowRight, 
-  Star, 
   Clock, 
   Phone, 
-  Building,
-  PiggyBank,
-  Users,
-  Award,
-  Lock,
-  AlertCircle,
-  Info,
-  Download,
-  Upload
+  Award
 } from 'lucide-react'
 
 const LOAPage = () => {
-  const [formData, setFormData] = useState({
-    // Business Details
-    businessName: '',
-    businessAddress: '',
-    businessPostcode: '',
-    businessType: '',
-    contactName: '',
-    contactPosition: '',
-    contactEmail: '',
-    contactPhone: '',
-    
-    // Current Supplier Details
-    currentElectricitySupplier: '',
-    currentGasSupplier: '',
-    electricityAccountNumber: '',
-    gasAccountNumber: '',
-    electricityMpan: '',
-    gasMprn: '',
-    
-    // Authority
-    authorizedSignatory: '',
-    position: '',
-    signatureDate: '',
-    termsAccepted: false
-  })
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log('LOA Form submitted:', formData)
-  }
-
   const benefits = [
     {
       icon: <Shield className="h-6 w-6" />,
@@ -82,13 +33,6 @@ const LOAPage = () => {
     }
   ]
 
-  const requiredDocuments = [
-    'Recent energy bill (electricity or gas)',
-    'Business registration documents',
-    'Proof of business address',
-    'Contact authorization (if not the business owner)'
-  ]
-
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -101,21 +45,42 @@ const LOAPage = () => {
         <div className="absolute top-40 right-10 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float animation-delay-2000"></div>
         
         <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center bg-gradient-to-r from-primary-100 to-secondary-100 px-4 py-2 rounded-full mb-6">
-              <FileText className="h-5 w-5 text-primary-500 mr-2" />
-              <span className="text-sm font-semibold text-gray-800">Letter of Authority</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center bg-gradient-to-r from-primary-100 to-secondary-100 px-4 py-2 rounded-full mb-6">
+                <FileText className="h-5 w-5 text-primary-500 mr-2" />
+                <span className="text-sm font-semibold text-gray-800">Letter of Authority</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Letter of
+                <span className="gradient-text"> Authority</span>
+              </h1>
+              
+              <p className="text-xl text-gray-600 mb-8">
+                Complete your Letter of Authority to authorize Switch Watt to manage your 
+                energy switching process and negotiate the best deals on your behalf.
+              </p>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Letter of
-              <span className="gradient-text"> Authority</span>
-            </h1>
-            
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Complete your Letter of Authority to authorize Switch Watt to manage your 
-              energy switching process and negotiate the best deals on your behalf.
-            </p>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop" 
+                alt="Business documents and energy contracts"
+                className="rounded-2xl shadow-2xl w-full h-80 object-cover"
+              />
+              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-800">Secure</p>
+                    <p className="text-sm text-gray-600">Bank-level Security</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -229,348 +194,28 @@ const LOAPage = () => {
       {/* LOA Form */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">
                 Complete Your <span className="gradient-text">Letter of Authority</span>
               </h2>
               <p className="text-xl text-gray-600">
-                Please provide accurate information to ensure smooth processing
+                Fill out the form below to authorize Switch Watt to help you switch energy suppliers
               </p>
             </div>
             
-            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Business Details Section */}
-                <div>
-                  <h3 className="text-2xl font-bold mb-6 flex items-center">
-                    <Building className="h-6 w-6 mr-2 text-primary-500" />
-                    Business Details
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="form-label">Business Name *</label>
-                      <input 
-                        type="text" 
-                        name="businessName"
-                        value={formData.businessName}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="Your Company Ltd" 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Business Type *</label>
-                      <select 
-                        name="businessType"
-                        value={formData.businessType}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        required
-                      >
-                        <option value="">Select Business Type</option>
-                        <option value="limited-company">Limited Company</option>
-                        <option value="partnership">Partnership</option>
-                        <option value="sole-trader">Sole Trader</option>
-                        <option value="charity">Charity</option>
-                        <option value="public-sector">Public Sector</option>
-                      </select>
-                    </div>
-                    <div className="md:col-span-2">
-                      <label className="form-label">Business Address *</label>
-                      <input 
-                        type="text" 
-                        name="businessAddress"
-                        value={formData.businessAddress}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="123 Business Street, City" 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Business Postcode *</label>
-                      <input 
-                        type="text" 
-                        name="businessPostcode"
-                        value={formData.businessPostcode}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="M1 1AA" 
-                        required 
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact Details Section */}
-                <div>
-                  <h3 className="text-2xl font-bold mb-6 flex items-center">
-                    <Users className="h-6 w-6 mr-2 text-primary-500" />
-                    Contact Details
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="form-label">Contact Name *</label>
-                      <input 
-                        type="text" 
-                        name="contactName"
-                        value={formData.contactName}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="John Smith" 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Position/Title *</label>
-                      <input 
-                        type="text" 
-                        name="contactPosition"
-                        value={formData.contactPosition}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="Managing Director" 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Email Address *</label>
-                      <input 
-                        type="email" 
-                        name="contactEmail"
-                        value={formData.contactEmail}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="john@company.com" 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Phone Number *</label>
-                      <input 
-                        type="tel" 
-                        name="contactPhone"
-                        value={formData.contactPhone}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="0161 123 4567" 
-                        required 
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Current Supplier Details */}
-                <div>
-                  <h3 className="text-2xl font-bold mb-6 flex items-center">
-                    <Lock className="h-6 w-6 mr-2 text-primary-500" />
-                    Current Supplier Information
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="form-label">Current Electricity Supplier</label>
-                      <input 
-                        type="text" 
-                        name="currentElectricitySupplier"
-                        value={formData.currentElectricitySupplier}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="e.g., British Gas" 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Current Gas Supplier</label>
-                      <input 
-                        type="text" 
-                        name="currentGasSupplier"
-                        value={formData.currentGasSupplier}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="e.g., E.ON" 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Electricity Account Number</label>
-                      <input 
-                        type="text" 
-                        name="electricityAccountNumber"
-                        value={formData.electricityAccountNumber}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="Found on your electricity bill" 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Gas Account Number</label>
-                      <input 
-                        type="text" 
-                        name="gasAccountNumber"
-                        value={formData.gasAccountNumber}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="Found on your gas bill" 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Electricity MPAN (if known)</label>
-                      <input 
-                        type="text" 
-                        name="electricityMpan"
-                        value={formData.electricityMpan}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="13-digit meter reference" 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Gas MPRN (if known)</label>
-                      <input 
-                        type="text" 
-                        name="gasMprn"
-                        value={formData.gasMprn}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="10-digit meter reference" 
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Authorization Section */}
-                <div>
-                  <h3 className="text-2xl font-bold mb-6 flex items-center">
-                    <FileText className="h-6 w-6 mr-2 text-primary-500" />
-                    Authorization
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="form-label">Authorized Signatory Name *</label>
-                      <input 
-                        type="text" 
-                        name="authorizedSignatory"
-                        value={formData.authorizedSignatory}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="Person authorized to sign" 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Position *</label>
-                      <input 
-                        type="text" 
-                        name="position"
-                        value={formData.position}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        placeholder="Director, Manager, etc." 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label className="form-label">Date *</label>
-                      <input 
-                        type="date" 
-                        name="signatureDate"
-                        value={formData.signatureDate}
-                        onChange={handleInputChange}
-                        className="form-input" 
-                        required 
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Terms and Conditions */}
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <div className="flex items-start space-x-3">
-                    <input 
-                      type="checkbox" 
-                      name="termsAccepted"
-                      checked={formData.termsAccepted}
-                      onChange={handleInputChange}
-                      className="mt-1" 
-                      required 
-                    />
-                    <div className="text-sm text-gray-700">
-                      <p className="font-semibold mb-2">I hereby authorize Switch Watt to:</p>
-                      <ul className="space-y-1 ml-4 list-disc">
-                        <li>Act as my agent in all matters relating to my energy supply</li>
-                        <li>Negotiate with energy suppliers on my behalf</li>
-                        <li>Switch my energy suppliers when beneficial</li>
-                        <li>Receive and review my energy bills and contracts</li>
-                        <li>Handle all correspondence with energy suppliers</li>
-                      </ul>
-                      <p className="mt-3 text-xs">
-                        By checking this box, I confirm that I have read and agree to the 
-                        <a href="/terms" className="text-primary-600 hover:underline ml-1">Terms & Conditions</a> and 
-                        <a href="/privacy" className="text-primary-600 hover:underline ml-1">Privacy Policy</a>.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <div className="text-center">
-                  <button type="submit" className="btn-gradient text-lg px-12 py-4">
-                    Submit Letter of Authority
-                    <ArrowRight className="ml-3 h-6 w-6" />
-                  </button>
-                  <p className="text-sm text-gray-500 mt-4">
-                    Your information is secure and will only be used for energy switching purposes
-                  </p>
-                </div>
-              </form>
+            <div className="bg-white rounded-3xl shadow-2xl p-4 md:p-8">
+              <iframe 
+                src="https://app.watt.co.uk/loa" 
+                style={{width: '100%', height: '800px', border: 'none'}}
+                title="Letter of Authority Form"
+                className="rounded-xl"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Required Documents */}
-      <section className="py-20">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">
-                Required <span className="gradient-text">Documents</span>
-              </h2>
-              <p className="text-xl text-gray-600">
-                Please have these documents ready to complete your LOA
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <Upload className="h-12 w-12 text-primary-500 mb-4" />
-                <h3 className="text-xl font-bold mb-4">Documents You'll Need</h3>
-                <ul className="space-y-3">
-                  {requiredDocuments.map((doc, index) => (
-                    <li key={index} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{doc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <Download className="h-12 w-12 text-secondary-500 mb-4" />
-                <h3 className="text-xl font-bold mb-4">Download LOA Template</h3>
-                <p className="text-gray-600 mb-6">
-                  Prefer to complete the form offline? Download our PDF template 
-                  and email it back to us.
-                </p>
-                <button className="btn-outline">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download PDF Template
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Security Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
