@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Industrial Design System */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-black text-gray-100 font-industrial;
+    background-image: 
+      radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Industrial Button Styles */
+  .btn-industrial {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-industrial-steel to-industrial-iron text-white font-mono text-sm uppercase tracking-wider border border-gray-600 hover:border-accent-electric hover:shadow-neon transition-all duration-300 transform hover:scale-105;
+  }
+
+  .btn-primary {
+    @apply btn-industrial bg-gradient-to-r from-primary-800 to-primary-900 hover:from-primary-700 hover:to-primary-800;
+  }
+
+  .btn-secondary {
+    @apply btn-industrial bg-transparent border-2 border-gray-400 text-gray-300 hover:bg-gray-400 hover:text-black;
+  }
+
+  .btn-neon {
+    @apply btn-industrial bg-black border-accent-electric text-accent-electric hover:bg-accent-electric hover:text-black hover:shadow-neon;
+  }
+
+  /* Industrial Card Styles */
+  .card-industrial {
+    @apply bg-gradient-to-br from-gray-900 to-black border border-gray-700 backdrop-blur-sm;
+  }
+
+  .card-tech {
+    @apply card-industrial p-6 rounded-none relative overflow-hidden;
+  }
+
+  .card-tech::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-electric to-transparent;
+  }
+
+  /* Industrial Hero Styles */
+  .hero-industrial {
+    @apply relative bg-gradient-to-br from-black via-gray-900 to-industrial-carbon text-white;
+    background-image: 
+      linear-gradient(45deg, transparent 24%, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05) 76%, transparent 77%, transparent),
+      linear-gradient(-45deg, transparent 24%, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05) 76%, transparent 77%, transparent);
+    background-size: 30px 30px;
+  }
+
+  /* Tech Text Styles */
+  .text-glitch {
+    @apply relative inline-block;
+  }
+
+  .text-glitch::before,
+  .text-glitch::after {
+    content: attr(data-text);
+    @apply absolute top-0 left-0 w-full h-full;
+    z-index: -1;
+  }
+
+  .text-glitch::before {
+    @apply text-red-500;
+    animation: glitch-1 0.5s infinite linear alternate-reverse;
+  }
+
+  .text-glitch::after {
+    @apply text-blue-500;
+    animation: glitch-2 0.5s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-1 {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+    100% { transform: translateX(0); }
+  }
+
+  @keyframes glitch-2 {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(2px); }
+    40% { transform: translateX(-2px); }
+    60% { transform: translateX(1px); }
+    80% { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Industrial Grid */
+  .grid-industrial {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Tech Form Styles */
+  .form-input {
+    @apply w-full px-4 py-3 bg-gray-900 border border-gray-600 text-white font-mono placeholder-gray-400 focus:border-accent-electric focus:ring-1 focus:ring-accent-electric focus:outline-none transition-all duration-300;
+  }
+
+  .form-label {
+    @apply block text-sm font-mono text-gray-300 mb-2 uppercase tracking-wider;
+  }
+
+  /* Loading Animations */
+  .loading-circuit {
+    @apply w-4 h-4 border-2 border-gray-600 border-t-accent-electric rounded-full animate-spin;
+  }
+
+  /* Container Styles */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-shadow-neon {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .border-circuit {
+    border-image: linear-gradient(45deg, #00ffff, transparent, #00ffff) 1;
+  }
+}
