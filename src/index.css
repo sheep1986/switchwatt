@@ -5,7 +5,7 @@
 /* Industrial Design System */
 @layer base {
   * {
-    @apply border-border;
+    @apply border-gray-600;
   }
   
   body {
