@@ -2,309 +2,267 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   Zap, 
-  Terminal, 
+  TrendingDown, 
   Shield, 
-  Database, 
-  Monitor, 
-  Settings, 
-  ChevronRight, 
-  Activity, 
-  BarChart3, 
-  Cpu,
-  HardDrive,
-  Network,
-  Power
+  CheckCircle, 
+  ArrowRight, 
+  Star, 
+  Clock, 
+  Phone, 
+  Building,
+  PiggyBank,
+  Users,
+  Award
 } from 'lucide-react'
+import SupplierLogos from '../components/SupplierLogos'
+import TrustPilot from '../components/TrustPilot'
 
 const HomePage = () => {
   const [currentStat, setCurrentStat] = useState(0)
-  const [terminalText, setTerminalText] = useState('')
 
-  const systemStats = [
-    { metric: 'POWER.GRID.EFFICIENCY', value: '99.7%', status: 'OPTIMAL' },
-    { metric: 'ENERGY.COST.REDUCTION', value: '45%', status: 'MAXIMUM' },
-    { metric: 'SYSTEM.UPTIME', value: '99.9%', status: 'STABLE' },
-    { metric: 'CONNECTED.NODES', value: '900K+', status: 'ACTIVE' }
-  ]
-
-  const terminalCommands = [
-    '> SYSTEM.BOOT.COMPLETE',
-    '> LOADING.ENERGY.PROTOCOLS...',
-    '> GRID.CONNECTION.ESTABLISHED',
-    '> POWER.OPTIMIZATION.ACTIVE',
-    '> READY.FOR.COMMAND.INPUT'
+  const stats = [
+    { value: '£8.5M+', label: 'Saved for Businesses' },
+    { value: '900K+', label: 'Happy Customers' },
+    { value: '30+', label: 'Energy Suppliers' },
+    { value: '45%', label: 'Average Savings' }
   ]
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentStat((prev) => (prev + 1) % systemStats.length)
+      setCurrentStat((prev) => (prev + 1) % stats.length)
     }, 3000)
     return () => clearInterval(interval)
   }, [])
 
-  useEffect(() => {
-    let currentIndex = 0
-    const typeText = () => {
-      if (currentIndex < terminalCommands.length) {
-        setTerminalText(terminalCommands[currentIndex])
-        currentIndex++
-        setTimeout(typeText, 1000)
-      } else {
-        setTimeout(() => {
-          currentIndex = 0
-          typeText()
-        }, 2000)
-      }
-    }
-    typeText()
-  }, [])
-
-  const coreModules = [
+  const services = [
     {
       icon: <Zap className="h-8 w-8" />,
-      code: 'ELEC.001',
-      name: 'POWER.GRID.ANALYSIS',
-      description: 'Advanced electricity price comparison and grid optimization protocols',
-      path: '/business-electricity',
-      status: 'ONLINE'
+      title: 'Business Electricity',
+      description: 'Compare electricity prices from 30+ suppliers and switch in minutes',
+      link: '/business-electricity',
+      color: 'from-blue-500 to-purple-600'
     },
     {
-      icon: <Activity className="h-8 w-8" />,
-      code: 'THER.002',
-      name: 'THERMAL.MANAGEMENT',
-      description: 'Gas flow analysis and thermal energy distribution systems',
-      path: '/business-gas',
-      status: 'ONLINE'
+      icon: <Building className="h-8 w-8" />,
+      title: 'Business Gas',
+      description: 'Find cheaper gas rates and save up to 40% on your bills',
+      link: '/business-gas',
+      color: 'from-orange-500 to-red-600'
     },
     {
-      icon: <HardDrive className="h-8 w-8" />,
-      code: 'FLUD.003',
-      name: 'FLUID.DYNAMICS',
-      description: 'Water supply optimization and distribution network control',
-      path: '/water-services',
-      status: 'ACTIVE'
+      icon: <Shield className="h-8 w-8" />,
+      title: 'Renewable Energy',
+      description: '100% green energy options for eco-conscious businesses',
+      link: '/renewable-energy',
+      color: 'from-green-500 to-teal-600'
     },
     {
-      icon: <Network className="h-8 w-8" />,
-      code: 'COMM.004',
-      name: 'COMMUNICATION.GRID',
-      description: 'Telecommunications infrastructure and data transmission networks',
-      path: '/telecoms-services',
-      status: 'SECURE'
+      icon: <Users className="h-8 w-8" />,
+      title: 'Multi-Site Energy',
+      description: 'Manage multiple business locations with one simple solution',
+      link: '/multi-site-energy',
+      color: 'from-purple-500 to-pink-600'
     }
   ]
 
-  const industrialFeatures = [
+  const benefits = [
+    {
+      icon: <PiggyBank className="h-6 w-6" />,
+      title: 'Save Up to 45%',
+      description: 'Our customers save an average of £3,500 per year on energy bills'
+    },
+    {
+      icon: <Clock className="h-6 w-6" />,
+      title: 'Switch in Minutes',
+      description: 'Simple online process - we handle everything for you'
+    },
     {
       icon: <Shield className="h-6 w-6" />,
-      title: 'QUANTUM.ENCRYPTION',
-      value: '256-BIT',
-      description: 'Military-grade security protocols'
+      title: 'No Interruption',
+      description: 'Your supply continues seamlessly during the switch'
     },
     {
-      icon: <Database className="h-6 w-6" />,
-      title: 'DATA.PROCESSING',
-      value: '1.2TB/SEC',
-      description: 'Real-time analytics engine'
+      icon: <Award className="h-6 w-6" />,
+      title: 'Expert Support',
+      description: 'Dedicated account managers guide you through the process'
+    }
+  ]
+
+  const process = [
+    {
+      step: '1',
+      title: 'Tell Us About Your Business',
+      description: 'Share your current energy usage and business details'
     },
     {
-      icon: <Cpu className="h-6 w-6" />,
-      title: 'NEURAL.NETWORK',
-      value: 'AI.DRIVEN',
-      description: 'Predictive optimization algorithms'
+      step: '2',
+      title: 'We Compare The Market',
+      description: 'We search 30+ suppliers to find you the best deals'
     },
     {
-      icon: <Monitor className="h-6 w-6" />,
-      title: 'GRID.MONITORING',
-      value: '24/7/365',
-      description: 'Continuous system surveillance'
+      step: '3',
+      title: 'Choose Your New Supplier',
+      description: 'Review quotes and select the perfect plan for your needs'
+    },
+    {
+      step: '4',
+      title: 'We Handle The Switch',
+      description: 'Sit back while we manage the entire switching process'
     }
   ]
 
   return (
-    <div className="bg-black text-gray-100">
-      {/* Hero Section - Industrial Command Center */}
-      <section className="hero-industrial min-h-screen flex items-center relative overflow-hidden pt-20">
-        {/* Grid Overlay */}
-        <div className="absolute inset-0 grid-industrial opacity-30"></div>
+    <div>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-orange-50"></div>
         
-        {/* Floating Circuit Elements */}
-        <div className="absolute top-20 right-20 w-32 h-32 border border-accent-electric/30 animate-pulse hidden lg:block"></div>
-        <div className="absolute bottom-40 left-10 w-24 h-24 border border-gray-600 rotate-45 hidden lg:block"></div>
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float animation-delay-4000"></div>
         
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              {/* System Status */}
-              <div className="inline-flex items-center space-x-3 bg-gray-900/80 border border-gray-700 px-4 py-2 mb-8">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="font-mono text-xs text-gray-300 tracking-wider">
-                  SYSTEM.STATUS: <span className="text-green-400">OPERATIONAL</span>
-                </span>
+              <div className="inline-flex items-center bg-gradient-to-r from-primary-100 to-secondary-100 px-4 py-2 rounded-full mb-6">
+                <Star className="h-5 w-5 text-yellow-500 mr-2" />
+                <span className="text-sm font-semibold text-gray-800">Trusted by 900,000+ UK Businesses</span>
               </div>
-
-              {/* Main Title */}
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-mono font-bold mb-6 leading-none">
-                <span className="block text-white">SWITCH</span>
-                <span className="block text-accent-electric text-shadow-neon">WATT</span>
-                <span className="block text-2xl md:text-3xl text-gray-400 mt-2">
-                  v2.1.0.INDUSTRIAL
-                </span>
+              
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                Switch & Save on
+                <span className="gradient-text"> Business Energy</span>
               </h1>
-
-              {/* Subtitle */}
-              <p className="text-xl text-gray-300 mb-8 font-mono leading-relaxed">
-                ADVANCED.INDUSTRIAL.ENERGY.MANAGEMENT.SYSTEMS<br/>
-                GRID.OPTIMIZATION // POWER.ANALYTICS // COST.REDUCTION
+              
+              <p className="text-xl text-gray-600 mb-8">
+                Compare business electricity and gas prices from 30+ suppliers. 
+                Save up to 45% on your energy bills with zero hassle.
               </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
                   href="https://app.watt.co.uk/company"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-neon justify-center lg:justify-start"
+                  className="btn-gradient"
                 >
-                  <Terminal className="mr-2 h-5 w-5" />
-                  ACCESS.TERMINAL
+                  Get Instant Quote
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
-                <Link to="/contact" className="btn-secondary justify-center lg:justify-start">
-                  <Monitor className="mr-2 h-5 w-5" />
-                  SYSTEM.INFO
-                </Link>
+                <a
+                  href="tel:+441618338661"
+                  className="btn-outline"
+                >
+                  <Phone className="mr-2 h-5 w-5" />
+                  Call 0161 833 8661
+                </a>
               </div>
-
-              {/* Live System Stats */}
-              <div className="card-tech">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="font-mono text-sm text-accent-electric tracking-wider">
-                    [REAL.TIME.METRICS]
+              
+              {/* Stats Carousel */}
+              <div className="bg-white rounded-2xl shadow-lg p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-3xl font-bold gradient-text">{stats[currentStat].value}</div>
+                    <div className="text-sm text-gray-600">{stats[currentStat].label}</div>
                   </div>
                   <div className="flex space-x-1">
-                    {systemStats.map((_, index) => (
+                    {stats.map((_, index) => (
                       <div
                         key={index}
-                        className={`h-2 transition-all duration-300 ${
-                          index === currentStat ? 'w-8 bg-accent-electric' : 'w-2 bg-gray-600'
+                        className={`h-2 transition-all duration-300 rounded-full ${
+                          index === currentStat ? 'w-8 bg-gradient-to-r from-primary-500 to-secondary-500' : 'w-2 bg-gray-300'
                         }`}
                       />
                     ))}
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="font-mono text-2xl font-bold text-white">
-                      {systemStats[currentStat].value}
-                    </div>
-                    <div className="font-mono text-xs text-gray-400">
-                      {systemStats[currentStat].metric}
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-mono text-sm text-green-400">
-                      {systemStats[currentStat].status}
-                    </div>
-                    <div className="font-mono text-xs text-gray-500">
-                      STATUS.CODE
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
-
-            {/* Terminal Interface */}
-            <div className="relative">
-              <div className="card-tech">
-                {/* Terminal Header */}
-                <div className="flex items-center justify-between border-b border-gray-700 pb-4 mb-6">
-                  <div className="flex items-center space-x-2">
-                    <Terminal className="h-5 w-5 text-accent-electric" />
-                    <span className="font-mono text-sm text-gray-300">COMMAND.INTERFACE</span>
-                  </div>
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
+            
+            {/* Quote Form */}
+            <div className="bg-white rounded-3xl shadow-2xl p-8">
+              <h2 className="text-2xl font-bold mb-6">Get Your Free Quote</h2>
+              <form className="space-y-4">
+                <div>
+                  <label className="form-label">Business Name</label>
+                  <input type="text" className="form-input" placeholder="Your Company Ltd" />
                 </div>
-
-                {/* Terminal Content */}
-                <div className="space-y-2 mb-6">
-                  <div className="font-mono text-sm text-gray-300">
-                    <span className="text-accent-electric">root@switchwatt:~$ </span>
-                    {terminalText}
-                    <span className="animate-pulse">_</span>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="form-label">First Name</label>
+                    <input type="text" className="form-input" placeholder="John" />
+                  </div>
+                  <div>
+                    <label className="form-label">Last Name</label>
+                    <input type="text" className="form-input" placeholder="Smith" />
                   </div>
                 </div>
-
-                {/* System Features */}
-                <div className="grid grid-cols-2 gap-4">
-                  {industrialFeatures.map((feature, index) => (
-                    <div key={index} className="border border-gray-700 p-3">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <span className="text-accent-electric">{feature.icon}</span>
-                        <span className="font-mono text-xs text-gray-300">{feature.title}</span>
-                      </div>
-                      <div className="font-mono text-sm text-white font-bold">
-                        {feature.value}
-                      </div>
-                      <div className="font-mono text-xs text-gray-500">
-                        {feature.description}
-                      </div>
-                    </div>
-                  ))}
+                <div>
+                  <label className="form-label">Business Postcode</label>
+                  <input type="text" className="form-input" placeholder="M1 1AA" />
                 </div>
-              </div>
+                <div>
+                  <label className="form-label">Email Address</label>
+                  <input type="email" className="form-input" placeholder="john@company.com" />
+                </div>
+                <div>
+                  <label className="form-label">Phone Number</label>
+                  <input type="tel" className="form-input" placeholder="0161 123 4567" />
+                </div>
+                <button type="submit" className="btn-gradient w-full">
+                  Compare Prices Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </button>
+                <p className="text-xs text-gray-500 text-center">
+                  By submitting, you agree to our Terms & Conditions and Privacy Policy
+                </p>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Modules Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+      {/* Supplier Logos */}
+      <section className="py-12 bg-gray-50 border-y border-gray-200">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-mono font-bold text-white mb-4 tracking-wider">
-              [CORE.SYSTEM.MODULES]
-            </h2>
-            <p className="text-gray-400 font-mono text-lg">
-              INDUSTRIAL.ENERGY.MANAGEMENT.PROTOCOLS
+          <div className="text-center mb-6">
+            <p className="text-sm font-semibold text-gray-600 uppercase tracking-wider">
+              We compare prices from all major UK energy suppliers
             </p>
           </div>
+          <SupplierLogos />
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreModules.map((module, index) => (
+      {/* Services Section */}
+      <section className="py-20">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              Our <span className="gradient-text">Energy Services</span>
+            </h2>
+            <p className="text-xl text-gray-600">
+              Complete business energy solutions under one roof
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
               <Link
                 key={index}
-                to={module.path}
-                className="card-tech group hover:border-accent-electric transition-all duration-300 transform hover:scale-105"
+                to={service.link}
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                {/* Module Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-accent-electric group-hover:animate-pulse">
-                    {module.icon}
-                  </div>
-                  <div className="font-mono text-xs text-gray-500">
-                    {module.code}
-                  </div>
-                </div>
-
-                {/* Module Info */}
-                <h3 className="font-mono text-lg font-bold text-white mb-3 group-hover:text-accent-electric transition-colors duration-300">
-                  {module.name}
-                </h3>
-                <p className="font-mono text-sm text-gray-400 mb-4 leading-relaxed">
-                  {module.description}
-                </p>
-
-                {/* Module Status */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="font-mono text-xs text-green-400">{module.status}</span>
-                  </div>
-                  <ChevronRight className="h-4 w-4 text-gray-600 group-hover:text-accent-electric group-hover:translate-x-1 transition-all duration-300" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-90`}></div>
+                <div className="relative z-10 p-8 text-white">
+                  <div className="mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-white/90 mb-4">{service.description}</p>
+                  <span className="inline-flex items-center text-white font-semibold">
+                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  </span>
                 </div>
               </Link>
             ))}
@@ -312,123 +270,93 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* System Capabilities */}
-      <section className="py-20 bg-gray-900">
+      {/* Benefits Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-mono font-bold text-white mb-6 tracking-wider">
-                [ADVANCED.CAPABILITIES]
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gray-800 border border-gray-600 flex items-center justify-center flex-shrink-0">
-                    <BarChart3 className="h-4 w-4 text-accent-electric" />
-                  </div>
-                  <div>
-                    <h3 className="font-mono text-lg text-white font-bold mb-2">
-                      PREDICTIVE.ANALYTICS
-                    </h3>
-                    <p className="font-mono text-sm text-gray-400">
-                      AI-powered forecasting algorithms analyze energy consumption patterns 
-                      and market fluctuations to optimize cost efficiency.
-                    </p>
-                  </div>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              Why Choose <span className="gradient-text">Switch Watt</span>?
+            </h2>
+            <p className="text-xl text-gray-600">
+              We make switching business energy simple, fast, and profitable
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="feature-card text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-primary-600">{benefit.icon}</span>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gray-800 border border-gray-600 flex items-center justify-center flex-shrink-0">
-                    <Network className="h-4 w-4 text-accent-electric" />
-                  </div>
-                  <div>
-                    <h3 className="font-mono text-lg text-white font-bold mb-2">
-                      GRID.INTEGRATION
-                    </h3>
-                    <p className="font-mono text-sm text-gray-400">
-                      Seamless integration with national grid systems for real-time 
-                      monitoring and automated switching protocols.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gray-800 border border-gray-600 flex items-center justify-center flex-shrink-0">
-                    <Shield className="h-4 w-4 text-accent-electric" />
-                  </div>
-                  <div>
-                    <h3 className="font-mono text-lg text-white font-bold mb-2">
-                      SECURITY.PROTOCOLS
-                    </h3>
-                    <p className="font-mono text-sm text-gray-400">
-                      Military-grade encryption and multi-layer security systems 
-                      protect sensitive energy infrastructure data.
-                    </p>
-                  </div>
-                </div>
+                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                <p className="text-gray-600">{benefit.description}</p>
               </div>
-            </div>
-
-            <div className="relative">
-              <div className="card-tech">
-                <div className="text-center mb-6">
-                  <Power className="h-16 w-16 text-accent-electric mx-auto mb-4 animate-pulse" />
-                  <h3 className="font-mono text-xl font-bold text-white tracking-wider">
-                    SYSTEM.PERFORMANCE
-                  </h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="font-mono text-sm text-gray-400">CPU.UTILIZATION</span>
-                    <span className="font-mono text-sm text-green-400">23%</span>
-                  </div>
-                  <div className="w-full bg-gray-800 h-2">
-                    <div className="bg-gradient-to-r from-green-400 to-accent-electric h-2 w-1/4"></div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="font-mono text-sm text-gray-400">MEMORY.USAGE</span>
-                    <span className="font-mono text-sm text-yellow-400">67%</span>
-                  </div>
-                  <div className="w-full bg-gray-800 h-2">
-                    <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 w-2/3"></div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="font-mono text-sm text-gray-400">NETWORK.THROUGHPUT</span>
-                    <span className="font-mono text-sm text-accent-electric">1.2GB/s</span>
-                  </div>
-                  <div className="w-full bg-gray-800 h-2">
-                    <div className="bg-gradient-to-r from-accent-electric to-blue-500 h-2 w-5/6 animate-pulse"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Terminal Access CTA */}
-      <section className="py-20 bg-gradient-to-t from-black to-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 grid-industrial opacity-20"></div>
-        <div className="container relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl font-mono font-bold text-white mb-6 tracking-wider">
-              [READY.FOR.DEPLOYMENT]
+      {/* How It Works */}
+      <section className="py-20">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              How It <span className="gradient-text">Works</span>
             </h2>
-            <p className="text-xl font-mono text-gray-300 mb-12">
-              INITIALIZE.SYSTEM.CONNECTION // OPTIMIZE.ENERGY.GRID // REDUCE.OPERATIONAL.COSTS
+            <p className="text-xl text-gray-600">
+              Four simple steps to cheaper business energy
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a
-                href="https://app.watt.co.uk/company"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-neon text-lg px-8 py-4"
-              >
-                <Terminal className="mr-3 h-6 w-6" />
-                ACCESS.MAIN.TERMINAL
-              </a>
-              <Link to="/contact" className="btn-secondary text-lg px-8 py-4">
-                <Monitor className="mr-3 h-6 w-6" />
-                REQUEST.SYSTEM.INFO
-              </Link>
-            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {process.map((item, index) => (
+              <div key={index} className="relative">
+                {index < process.length - 1 && (
+                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-gray-300 to-transparent"></div>
+                )}
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4 shadow-lg">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Pilot Reviews */}
+      <TrustPilot />
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-500 to-secondary-500">
+        <div className="container text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Start Saving on Your Energy Bills?
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Join thousands of UK businesses already saving with Switch Watt. 
+            Get your free quote in under 60 seconds!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <a
+              href="https://app.watt.co.uk/company"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-primary-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl inline-flex items-center justify-center"
+            >
+              Get Your Free Quote
+              <ArrowRight className="ml-3 h-6 w-6" />
+            </a>
+            <a
+              href="tel:+441618338661"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-600 transition-all inline-flex items-center justify-center"
+            >
+              <Phone className="mr-3 h-6 w-6" />
+              Call Us Free
+            </a>
           </div>
         </div>
       </section>

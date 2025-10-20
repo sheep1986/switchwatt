@@ -8,68 +8,79 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f8f9fa',
-          100: '#e9ecef',
-          200: '#dee2e6',
-          300: '#ced4da',
-          400: '#adb5bd',
-          500: '#6c757d', // Industrial Gray
-          600: '#495057',
-          700: '#343a40',
-          800: '#212529',
-          900: '#000000', // Industrial Black
+          // Blue colors from logo
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6', // Main blue
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
         secondary: {
-          50: '#f8f9fa',
-          100: '#e9ecef',
-          200: '#dee2e6',
-          300: '#ced4da',
-          400: '#adb5bd',
-          500: '#6c757d',
-          600: '#495057',
-          700: '#343a40',
-          800: '#212529',
-          900: '#000000',
+          // Orange colors from logo
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316', // Main orange
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
         },
         accent: {
-          electric: '#00ffff', // Electric Blue
-          warning: '#ffc107', // Warning Yellow
-          success: '#28a745', // Success Green
-          danger: '#dc3545', // Danger Red
+          yellow: '#fbbf24',
+          purple: '#8b5cf6',
+          lightBlue: '#60a5fa',
+          orange: '#fb923c',
         },
-        industrial: {
-          steel: '#4a5568',
-          iron: '#2d3748',
-          carbon: '#1a202c',
-          titanium: '#718096',
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
         }
       },
       fontFamily: {
-        'mono': ['Courier New', 'monospace'],
-        'tech': ['Roboto Mono', 'monospace'],
-        'industrial': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Poppins', 'system-ui', 'sans-serif'],
       },
       animation: {
+        'gradient': 'gradient 8s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'bounce-slow': 'bounce 2s infinite',
-        'flicker': 'flicker 2s infinite',
-        'circuit': 'circuit 3s ease-in-out infinite',
       },
       keyframes: {
-        flicker: {
-          '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0.5 },
+        gradient: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          }
         },
-        circuit: {
-          '0%': { transform: 'translateX(-100%)' },
-          '50%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(100%)' },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
         }
       },
-      boxShadow: {
-        'neon': '0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff',
-        'industrial': '0 8px 32px rgba(0, 0, 0, 0.8)',
-        'steel': '0 4px 20px rgba(74, 85, 104, 0.4)',
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-brand': 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #fda085 100%)',
       }
     },
   },
